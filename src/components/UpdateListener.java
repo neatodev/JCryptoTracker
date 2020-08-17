@@ -1,6 +1,6 @@
 package components;
 
-public interface UpdateService {
+public interface UpdateListener {
 
-  void updateValues();
+  void updateValues(String btcBit, String ethBit, String btcCoin, String ethCoin);
 }
