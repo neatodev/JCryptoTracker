@@ -7,6 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Application to track & update Bitpanda/Coinstats BTC+ETH values.
+ *
+ * @author Mario Schweidler
+ */
 public class Main extends Application {
 
   public static void main(String[] args) {
