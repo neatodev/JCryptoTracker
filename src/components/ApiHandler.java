@@ -13,11 +13,11 @@ import java.net.URLConnection;
 public class ApiHandler {
 
   /** Custom Coinstats API URL that contains BTC + ETH details */
-  public static final String COINSTATS =
+  static final String COINSTATS =
       "https://api.coinstats.app/public/v1/coins?skip=0&limit=2&currency=EUR";
 
   /** Bitpanda API that contains all cryptocurrencies available on the service */
-  public static final String BITPANDA = "https://api.bitpanda.com/v1/ticker";
+  static final String BITPANDA = "https://api.bitpanda.com/v1/ticker";
 
   /**
    * Connects to Bitpanda/Coinstats API link.
@@ -46,7 +46,7 @@ public class ApiHandler {
    * @throws IOException if the URL is invalid
    * @return The cryptocurrency value
    */
-  public String cryptoValue(String sUrl, String currency) throws IOException {
+  String cryptoValue(String sUrl, String currency) throws IOException {
     URLConnection request = connectToApi(sUrl);
     JsonParser parser = new JsonParser();
     JsonElement root = parser.parse(new InputStreamReader((InputStream) request.getContent()));
@@ -63,7 +63,7 @@ public class ApiHandler {
    * @throws IOException if the URL is invalid
    * @return The cryptocurrency value
    */
-  public String cryptoValue(String sUrl, int arrayValue) throws IOException {
+  String cryptoValue(String sUrl, int arrayValue) throws IOException {
     URLConnection request = connectToApi(sUrl);
     JsonParser parser = new JsonParser();
     JsonElement root = parser.parse(new InputStreamReader((InputStream) request.getContent()));

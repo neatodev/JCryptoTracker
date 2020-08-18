@@ -3,6 +3,7 @@ import javafx.application.Application;
 import javafx.controller.CryptoController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -16,6 +17,8 @@ public class Main extends Application {
   public void start(Stage stage) throws Exception {
     AnchorPane window = FXMLLoader.load(getClass().getResource("javafx/resources/window.fxml"));
     stage.setScene(new Scene(window));
+    stage.setTitle("JCryptoTracker");
+    stage.getIcons().add(new Image("resources/weird_icon.png"));
     stage.setResizable(false);
     stage.show();
   }

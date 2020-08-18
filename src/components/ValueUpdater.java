@@ -6,15 +6,20 @@ import java.util.List;
 
 public class ValueUpdater extends Thread {
 
-  ApiHandler api = new ApiHandler();
+  private ApiHandler api = new ApiHandler();
 
   /** [btcBIT,ethBIT,btcCOIN,ethCOIN] */
-  String[] cryptoValues = {"0", "0", "0", "0"};
+  private String[] cryptoValues = {"0", "0", "0", "0"};
 
-  List<UpdateListener> listeners = new ArrayList<>();
+  private List<UpdateListener> listeners = new ArrayList<>();
 
   private int interval;
 
+  /**
+   * Constructor
+   *
+   * @param upd interval value
+   */
   public ValueUpdater(int upd) {
     interval = upd;
   }
@@ -31,6 +36,10 @@ public class ValueUpdater extends Thread {
     }
   }
 
+  /**
+   * Updates coin values and stores them in a String array, then notifies listener(s) with the new
+   * values.
+   */
   public void updateNow() {
     try {
       cryptoValues[0] = api.cryptoValue(ApiHandler.BITPANDA, "BTC");
@@ -43,20 +52,36 @@ public class ValueUpdater extends Thread {
     }
   }
 
+  /**
+   * Adds a listener to the UpdateListener list.
+   *
+   * @param listener The listener to add
+   */
   public void addListener(UpdateListener listener) {
     listeners.add(listener);
   }
 
+  /** Notifies listeners with changes. */
   private void notifyListeners() {
     for (UpdateListener listener : listeners) {
       listener.updateValues(cryptoValues[0], cryptoValues[1], cryptoValues[2], cryptoValues[3]);
     }
   }
 
+  /**
+   * Setter for the sleep interval.
+   *
+   * @param upd new sleep interval
+   */
   public void setInterval(int upd) {
     interval = upd;
   }
 
+  /**
+   * Getter for the sleep interval.
+   *
+   * @return the current sleep interval
+   */
   public int getInterval() {
     return interval;
   }

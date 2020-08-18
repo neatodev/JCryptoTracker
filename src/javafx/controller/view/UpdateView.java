@@ -7,12 +7,21 @@ import javafx.scene.text.Text;
 
 public class UpdateView implements UpdateListener {
 
-  Text bitBTC;
-  Text bitETH;
-  Text coinBTC;
-  Text coinETH;
-  Text lastRefresh;
+  private Text bitBTC;
+  private Text bitETH;
+  private Text coinBTC;
+  private Text coinETH;
+  private Text lastRefresh;
 
+  /**
+   * Constructor
+   *
+   * @param btc1 BTC Bitpanda
+   * @param eth1 ETH Bitpanda
+   * @param btc2 BTC Coinstats
+   * @param eth2 ETH Coinstats
+   * @param refresh lastRefresh text
+   */
   public UpdateView(Text btc1, Text eth1, Text btc2, Text eth2, Text refresh) {
     bitBTC = btc1;
     bitETH = eth1;
